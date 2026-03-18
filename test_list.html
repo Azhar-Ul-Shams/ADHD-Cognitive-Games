@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test List - User Information</title>
+    <link rel="stylesheet" href="form-styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f5f7fa;
+            font-family: 'Inter', sans-serif;
+            color: #2c3e50;
+            line-height: 1.6;
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <div class="form-header">
+            <h1>Participant Information</h1>
+            <p>Please provide your details to begin the cognitive tests</p>
+        </div>
+        
+        <form id="userInfoForm">
+            <div class="form-group">
+                <label for="userName">Full Name</label>
+                <input type="text" id="userName" class="form-control" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="userEmail">Email Address</label>
+                <input type="email" id="userEmail" class="form-control" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="userAge">Age</label>
+                <input type="number" id="userAge" class="form-control" min="18" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Sex assigned at birth</label>
+                <div class="radio-group">
+                    <label class="radio-option">
+                        <input type="radio" name="sex" value="male" required> Male
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="sex" value="female"> Female
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="sex" value="other"> Other
+                    </label>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label class="checkbox-label">
+                    <input type="checkbox" id="consent" required>
+                    I consent to participate in these cognitive tests and understand that my data will be used for research purposes.
+                </label>
+            </div>
+            
+            <div class="form-group">
+                <h3>Current State Assessment</h3>
+                <p>Please rate your current state on a scale of 0-5:</p>
+                
+                <div class="scale-question">
+                    <label for="sleepiness">Sleepiness (0 = Fully awake, 5 = Extremely sleepy)</label>
+                    <div class="range-container">
+                        <input type="range" id="sleepiness" class="range-slider" min="0" max="5" step="1" value="0">
+                        <span class="range-value" id="sleepinessValue">0</span>
+                    </div>
+                </div>
+                
+                <div class="scale-question">
+                    <label for="feeling">How are you feeling now? (0 = Very bad, 5 = Excellent)</label>
+                    <div class="range-container">
+                        <input type="range" id="feeling" class="range-slider" min="0" max="5" step="1" value="0">
+                        <span class="range-value" id="feelingValue">0</span>
+                    </div>
+                </div>
+                
+                <div class="scale-question">
+                    <label for="mood">Satiety (0 = Hungry, 5 = Full/Content)</label>
+                    <div class="range-container">
+                        <input type="range" id="mood" class="range-slider" min="0" max="5" step="1" value="0">
+                        <span class="range-value" id="moodValue">0</span>
+                    </div>
+                </div>
+            </div>
+            
+            <button type="submit" class="btn-submit">Begin Cognitive Tests</button>
+        </form>
+    </div>
+
+    <script src="test_list.js"></script>
+</body>
+</html>

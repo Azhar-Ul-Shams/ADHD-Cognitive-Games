@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trail Making Test</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="trail_making.css">
+    <link rel="stylesheet" href="shared.css">
+</head>
+<body>
+<div class="container">
+
+    <!-- Welcome -->
+    <div id="welcomeScreen">
+        <h1>Trail Making Test</h1>
+        <div class="instructions">
+            <p>Two rounds of a sequence-clicking task that measures attention and cognitive flexibility.</p>
+            <p><strong>Part A:</strong> Click circles numbered 1 → 2 → 3 … in order.</p>
+            <p><strong>Part B:</strong> Alternate between numbers and letters: 1 → A → 2 → B …</p>
+        </div>
+        <button id="startButton">Begin</button>
+        <br>
+        <button class="btn-skip-test" id="skipTestBtn">Skip this test</button>
+    </div>
+
+    <!-- Round 1 Instructions -->
+    <div id="round1InstructionScreen" style="display:none;">
+        <h2>Part A — Numbers Only</h2>
+        <p class="instr-text">Click the circles in numerical order as fast as you can:<br><strong>1 → 2 → 3 → … → 25</strong></p>
+        <button id="round1StartButton">Start Practice</button>
+    </div>
+
+    <!-- Round 1 Practice -->
+    <div id="round1PracticeScreen" style="display:none;">
+        <h2>Part A — Practice</h2>
+        <p id="practiceFeedback" class="feedback-msg"></p>
+        <div id="practiceTrailContainer" class="trail-container"></div>
+        <button id="round1PracticeCompleteButton">Begin Timed Test</button>
+        <br>
+        <button class="btn-skip-round" id="skipPractice1Btn">Skip Practice ›</button>
+    </div>
+
+    <!-- Round 1 Test -->
+    <div id="round1TestScreen" style="display:none;">
+        <div class="round-header">
+            <div class="round-badge">Part A</div>
+            <div class="timer-badge">⏱ <span id="time">0</span>s</div>
+        </div>
+        <div id="trailContainer" class="trail-container"></div>
+        <button class="btn-skip-round" id="skipRound1Btn" style="margin-top:12px;">Skip Part A ›</button>
+    </div>
+
+    <!-- Round 1 Complete -->
+    <div id="round1CompleteScreen" style="display:none;">
+        <div class="results-hero">
+            <div class="results-icon">A</div>
+            <h2>Part A Complete</h2>
+            <p class="r-subtitle">Numbers sequence finished</p>
+        </div>
+        <div id="round1Result"></div>
+        <button class="btn-continue" id="proceedToRound2Button">Continue to Part B →</button>
+    </div>
+
+    <!-- Round 2 Instructions -->
+    <div id="round2InstructionScreen" style="display:none;">
+        <h2>Part B — Numbers &amp; Letters</h2>
+        <p class="instr-text">Alternate between numbers and letters:<br><strong>1 → A → 2 → B → 3 → C …</strong></p>
+        <button id="round2StartButton">Start Practice</button>
+    </div>
+
+    <!-- Round 2 Practice -->
+    <div id="round2PracticeScreen" style="display:none;">
+        <h2>Part B — Practice</h2>
+        <p id="round2PracticeFeedback" class="feedback-msg"></p>
+        <div id="round2PracticeTrailContainer" class="trail-container"></div>
+        <button id="round2PracticeCompleteButton">Begin Timed Test</button>
+        <br>
+        <button class="btn-skip-round" id="skipPractice2Btn">Skip Practice ›</button>
+    </div>
+
+    <!-- Round 2 Test -->
+    <div id="round2TestScreen" style="display:none;">
+        <div class="round-header">
+            <div class="round-badge">Part B</div>
+            <div class="timer-badge">⏱ <span id="round2Time">0</span>s</div>
+        </div>
+        <div id="round2TrailContainer" class="trail-container"></div>
+        <button class="btn-skip-round" id="skipRound2Btn" style="margin-top:12px;">Skip Part B ›</button>
+    </div>
+
+    <!-- Final Results -->
+    <div id="finalResultsScreen" style="display:none;">
+        <div class="results-hero">
+            <div class="results-icon">✓</div>
+            <h2>Trail Making Complete</h2>
+            <p class="r-subtitle">Visual attention &amp; cognitive flexibility</p>
+        </div>
+        <div id="metricsCards" class="metrics-grid"></div>
+        <p class="section-label">Detailed Results</p>
+        <div class="block-wrap">
+            <div id="finalResults"></div>
+        </div>
+        <button class="btn-continue" id="goToAnotherTest">Continue →</button>
+    </div>
+
+</div>
+<script src="trail_making.js"></script>
+</body>
+</html>

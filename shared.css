@@ -1,0 +1,233 @@
+/* ==============================================
+   shared.css — Common components across all tests
+   Cognitive Assessment Battery · IIT Kharagpur
+   ============================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* ── Skip Buttons ──────────────────────────────────── */
+.btn-skip-test {
+    display: inline-block;
+    background: transparent;
+    border: 1.5px solid #e2e8f0;
+    color: #94a3b8;
+    padding: 7px 22px;
+    font-size: 12px;
+    font-family: 'Inter', sans-serif;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-top: 12px;
+    letter-spacing: 0.04em;
+    font-weight: 500;
+    transition: border-color 0.2s, color 0.2s, background 0.2s;
+    box-shadow: none;
+}
+.btn-skip-test:hover {
+    border-color: #94a3b8;
+    color: #475569;
+    background: #f8fafc;
+    transform: none;
+    box-shadow: none;
+}
+
+.btn-skip-round {
+    display: inline-block;
+    background: transparent;
+    border: 1px solid #e2e8f0;
+    color: #94a3b8;
+    padding: 5px 14px;
+    font-size: 11px;
+    font-family: 'Inter', sans-serif;
+    border-radius: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    letter-spacing: 0.03em;
+    font-weight: 500;
+    transition: all 0.2s;
+    box-shadow: none;
+}
+.btn-skip-round:hover {
+    border-color: #94a3b8;
+    color: #475569;
+    background: #f8fafc;
+    transform: none;
+    box-shadow: none;
+}
+
+/* ── Results Screen Components ─────────────────────── */
+.results-hero {
+    text-align: center;
+    padding: 4px 0 22px;
+    border-bottom: 1px solid #f1f5f9;
+    margin-bottom: 20px;
+}
+
+.results-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #10b981, #059669);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 12px;
+    font-size: 24px;
+    color: white;
+    box-shadow: 0 4px 14px rgba(16, 185, 129, 0.28);
+}
+
+.results-hero h2 {
+    font-size: 19px;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 0 0 4px;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: -0.01em;
+}
+
+.results-hero .r-subtitle {
+    font-size: 13px;
+    color: #64748b;
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Metric Cards */
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+    gap: 10px;
+    margin-bottom: 18px;
+}
+
+.metric-card {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 13px 8px;
+    text-align: center;
+}
+
+.m-label {
+    font-size: 9.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    color: #94a3b8;
+    font-weight: 600;
+    margin-bottom: 6px;
+    font-family: 'Inter', sans-serif;
+    line-height: 1.3;
+}
+
+.m-value {
+    font-size: 22px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1;
+    margin-bottom: 2px;
+    font-family: 'Inter', sans-serif;
+}
+
+.m-unit {
+    font-size: 10px;
+    color: #94a3b8;
+    font-family: 'Inter', sans-serif;
+}
+
+.m-badge {
+    display: inline-block;
+    font-size: 9px;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 8px;
+    margin-top: 5px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-family: 'Inter', sans-serif;
+}
+.m-badge.good    { background: #dcfce7; color: #15803d; }
+.m-badge.ok      { background: #fef9c3; color: #a16207; }
+.m-badge.warn    { background: #ffedd5; color: #c2410c; }
+.m-badge.concern { background: #fee2e2; color: #b91c1c; }
+
+/* Block Table */
+.block-wrap {
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 18px;
+}
+
+.section-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #94a3b8;
+    font-weight: 600;
+    margin-bottom: 8px;
+    text-align: left;
+    font-family: 'Inter', sans-serif;
+}
+
+.block-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    font-family: 'Inter', sans-serif;
+}
+
+.block-table thead th {
+    background: #1e293b;
+    color: #94a3b8;
+    padding: 9px 10px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 9.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+}
+
+.block-table tbody td {
+    padding: 9px 10px;
+    text-align: center;
+    color: #334155;
+    border-bottom: 1px solid #f1f5f9;
+    font-size: 12px;
+}
+
+.block-table tbody tr:last-child td { border-bottom: none; }
+.block-table tbody tr:nth-child(even) td { background: #f8fafc; }
+
+.block-table tfoot td {
+    background: #f1f5f9;
+    font-weight: 700;
+    color: #0f172a;
+    border-top: 2px solid #e2e8f0;
+    padding: 10px;
+    text-align: center;
+    font-size: 12px;
+}
+
+/* Continue Button */
+.btn-continue {
+    display: block;
+    width: 100%;
+    max-width: 240px;
+    margin: 4px auto 0;
+    padding: 13px 24px;
+    background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 14px rgba(99, 102, 241, 0.35);
+    letter-spacing: 0.03em;
+    font-family: 'Inter', sans-serif;
+}
+.btn-continue:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(99, 102, 241, 0.45);
+}

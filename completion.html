@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assessment Complete</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="completion.css">
+</head>
+<body>
+    <div class="completion-page">
+
+        <!-- Hero Thank-you Banner -->
+        <div class="hero-band">
+            <div class="hero-inner">
+                <div class="hero-check">&#10003;</div>
+                <h1>Assessment Complete</h1>
+                <p>Thank you for contributing to cognitive science research at IIT Kharagpur.</p>
+                <div id="save-status-banner" class="save-banner saving">
+                    <span class="spin-dot"></span>
+                    <span id="save-text">Transmitting data…</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main content -->
+        <div class="content-wrap">
+
+            <!-- Results Cards Section -->
+            <section id="resultsSection" class="results-section" style="display:none;">
+                <h2 class="section-title">Your Performance Summary</h2>
+                <div id="testResultCards" class="test-result-cards"></div>
+            </section>
+
+            <!-- Tips Section -->
+            <section id="tipsSection" class="tips-section" style="display:none;">
+                <h2 class="section-title">Personalised Tips</h2>
+                <p class="section-sub">Based on your session data, here are some evidence-based strategies that may be helpful.</p>
+                <div id="tipsList" class="tips-list"></div>
+            </section>
+
+            <!-- Participation note -->
+            <section class="participation-note">
+                <div class="note-card">
+                    <div class="note-icon-text">Research</div>
+                    <div class="note-body">
+                        <strong>Your contribution matters.</strong>
+                        <p>Your anonymised data helps researchers develop better diagnostic tools for ADHD. No personally identifiable information is shared externally.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Action Buttons -->
+            <div class="action-row">
+                <button id="addUserBtn" class="btn-action-primary">Start New Participant</button>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="completion.js"></script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Psycho-Motor Vigilance Task (PVT)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="pvt.css">
+    <link rel="stylesheet" href="shared.css">
+</head>
+<body>
+<div class="container">
+
+    <!-- Welcome Screen -->
+    <div id="welcomeScreen">
+        <h1>Vigilance Task (PVT)</h1>
+        <div class="instructions">
+            <p>Watch the box. When <span class="red-text">red numbers</span> appear, press <strong>Spacebar</strong> as fast as you can.</p>
+            <p>Numbers appear at random intervals — stay focused throughout.</p>
+            <p>False starts (response &lt; 100 ms) are excluded from scoring.</p>
+        </div>
+        <button id="startButton">Begin Practice</button>
+        <br>
+        <button class="btn-skip-test" id="skipTestBtn">Skip this test</button>
+    </div>
+
+    <!-- Practice Screen -->
+    <div id="practiceScreen" style="display:none;">
+        <div class="round-header">
+            <div class="round-badge">Practice Round</div>
+            <div class="timer-badge">⏱ <span id="practiceTimeLeft">30</span>s</div>
+        </div>
+        <div id="practiceStimulus" class="stimulus-display">+</div>
+        <p id="practiceMessage" class="feedback-msg"></p>
+        <div class="skip-row">
+            <button class="btn-skip-round" id="skipPracticeBtn">Skip Practice ›</button>
+        </div>
+    </div>
+
+    <!-- Test Screen -->
+    <div id="testScreen" style="display:none;">
+        <div class="round-header">
+            <div class="round-badge">Round <span id="currentRound">1</span></div>
+            <div class="timer-badge">⏱ <span id="timeLeft">30</span>s</div>
+        </div>
+        <div id="stimulusDisplay" class="stimulus-display">+</div>
+        <p id="message" class="feedback-msg"></p>
+        <div class="skip-row">
+            <button class="btn-skip-round" id="skipRoundBtn">Skip Round ›</button>
+        </div>
+    </div>
+
+    <!-- Results Screen -->
+    <div id="resultsScreen" style="display:none;">
+        <div class="results-hero">
+            <div class="results-icon">✓</div>
+            <h2>PVT Complete</h2>
+            <p class="r-subtitle">Your sustained attention metrics</p>
+        </div>
+
+        <div id="metricsCards" class="metrics-grid"></div>
+
+        <p class="section-label">Block-by-Block Breakdown</p>
+        <div class="block-wrap">
+            <table class="block-table">
+                <thead>
+                    <tr>
+                        <th>Round</th>
+                        <th>Avg RT</th>
+                        <th>RTV</th>
+                        <th>Valid</th>
+                        <th>Lapses</th>
+                        <th>False Starts</th>
+                    </tr>
+                </thead>
+                <tbody id="resultsBody"></tbody>
+                <tfoot id="resultsFoot"></tfoot>
+            </table>
+        </div>
+
+        <button class="btn-continue" id="goToAnotherTest">Continue →</button>
+    </div>
+
+</div>
+<script src="pvt.js"></script>
+</body>
+</html>

@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: #f0f4f8;
+    color: #1e293b;
+    min-height: 100vh;
+}
+
+/* ── Hero band ───────────────────────────────── */
+.hero-band {
+    background: linear-gradient(135deg, #312e81 0%, #4f46e5 50%, #7c3aed 100%);
+    color: white;
+    padding: 52px 24px 48px;
+    text-align: center;
+}
+.hero-inner { max-width: 640px; margin: 0 auto; }
+.hero-badge { font-size: 52px; margin-bottom: 16px; animation: pop 0.5s ease; }
+@keyframes pop { 0%{transform:scale(0.5);opacity:0} 80%{transform:scale(1.1)} 100%{transform:scale(1);opacity:1} }
+.hero-band h1 { font-size: 32px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 10px; }
+.hero-band p  { font-size: 15px; color: rgba(255,255,255,0.82); line-height: 1.6; }
+
+.save-banner {
+    display: inline-flex; align-items: center; gap: 10px;
+    margin-top: 20px; padding: 10px 20px;
+    border-radius: 30px; font-size: 13px; font-weight: 600;
+    backdrop-filter: blur(8px);
+}
+.save-banner.saving  { background: rgba(255,255,255,0.18); color: white; }
+.save-banner.success { background: #dcfce7; color: #15803d; }
+.save-banner.error   { background: #fee2e2; color: #b91c1c; }
+
+.spin-dot {
+    width: 10px; height: 10px; border-radius: 50%;
+    border: 2px solid rgba(255,255,255,0.4);
+    border-top-color: white;
+    animation: spin 0.8s linear infinite;
+    display: inline-block;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── Content wrap ────────────────────────────── */
+.content-wrap { max-width: 760px; margin: 0 auto; padding: 36px 20px 60px; }
+
+.section-title { font-size: 19px; font-weight: 700; color: #0f172a; margin-bottom: 6px; }
+.section-sub   { font-size: 13px; color: #64748b; margin-bottom: 18px; line-height: 1.5; }
+
+/* ── Test Result Cards ───────────────────────── */
+.results-section  { margin-bottom: 36px; }
+.test-result-cards { display: flex; flex-direction: column; gap: 14px; }
+
+.test-card-block {
+    background: white;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    overflow: hidden;
+}
+.test-card-header {
+    display: flex; align-items: center; gap: 14px;
+    padding: 16px 20px;
+    border-bottom: 1px solid #f1f5f9;
+}
+.test-card-icon { font-size: 24px; }
+.test-card-title { font-size: 15px; font-weight: 700; color: #0f172a; }
+.test-card-status { margin-left: auto; font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 10px; letter-spacing: 0.05em; text-transform: uppercase; }
+.status-complete { background: #dcfce7; color: #15803d; }
+.status-skipped  { background: #f1f5f9; color: #64748b; }
+
+.test-card-metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 1px;
+    background: #f1f5f9;
+}
+.tcm-item {
+    background: white;
+    padding: 14px 16px;
+    text-align: center;
+}
+.tcm-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: #94a3b8; font-weight: 600; margin-bottom: 6px; }
+.tcm-value { font-size: 20px; font-weight: 700; color: #0f172a; }
+.tcm-unit  { font-size: 10px; color: #94a3b8; margin-top: 2px; }
+
+/* ── Tips Section ────────────────────────────── */
+.tips-section { margin-bottom: 36px; }
+.tips-list    { display: flex; flex-direction: column; gap: 12px; }
+
+.tip-card {
+    background: white;
+    border-radius: 12px;
+    padding: 18px 20px;
+    display: flex; gap: 14px; align-items: flex-start;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    border-left: 4px solid #6366f1;
+}
+.tip-icon  { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
+.tip-body  { flex: 1; }
+.tip-title { font-size: 14px; font-weight: 700; color: #0f172a; margin-bottom: 4px; }
+.tip-text  { font-size: 13px; color: #475569; line-height: 1.6; }
+
+.tip-card.attention { border-color: #6366f1; }
+.tip-card.impulse   { border-color: #f59e0b; }
+.tip-card.memory    { border-color: #10b981; }
+.tip-card.general   { border-color: #3b82f6; }
+
+/* ── Participation note ──────────────────────── */
+.participation-note { margin-bottom: 32px; }
+.note-card {
+    background: #eef2ff;
+    border-radius: 12px;
+    padding: 18px 20px;
+    display: flex; gap: 14px; align-items: flex-start;
+}
+.note-icon { font-size: 24px; flex-shrink: 0; }
+.note-body strong { font-size: 14px; font-weight: 700; color: #3730a3; display: block; margin-bottom: 4px; }
+.note-body p      { font-size: 13px; color: #4338ca; line-height: 1.5; margin: 0; }
+
+/* ── Action row ──────────────────────────────── */
+.action-row { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+
+.btn-action-primary {
+    padding: 14px 36px;
+    background: linear-gradient(135deg, #6366f1, #4f46e5);
+    color: white; border: none; border-radius: 30px;
+    font-size: 14px; font-weight: 700; cursor: pointer;
+    box-shadow: 0 4px 18px rgba(99,102,241,0.38);
+    transition: all 0.3s ease; letter-spacing: 0.03em;
+    font-family: 'Inter', sans-serif;
+}
+.btn-action-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(99,102,241,0.46); }
+
+/* ── hero check mark (replaces emoji badge) ── */
+.hero-check {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.22);
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 16px;
+    font-size: 28px; color: white; font-weight: 700;
+    border: 2px solid rgba(255,255,255,0.4);
+}
+
+/* note icon text label */
+.note-icon-text {
+    font-size: 10px; font-weight: 800; letter-spacing: 0.08em;
+    color: #4338ca; background: #c7d2fe;
+    border-radius: 6px; padding: 4px 6px;
+    flex-shrink: 0; align-self: flex-start; margin-top: 2px;
+    text-transform: uppercase;
+}
+
+/* text abbreviation icons on test cards */
+.test-card-icon {
+    font-size: 10px !important;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    color: white;
+    background: #4f46e5;
+    border-radius: 6px;
+    padding: 4px 6px;
+    flex-shrink: 0;
+    align-self: center;
+    line-height: 1.2;
+}
+
+/* tip icon symbols */
+.tip-icon {
+    font-size: 18px !important;
+    color: #6366f1;
+    flex-shrink: 0;
+    margin-top: 2px;
+    line-height: 1;
+}

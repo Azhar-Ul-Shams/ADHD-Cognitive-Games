@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dual N-Back Task</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="dual_n_back.css">
+    <link rel="stylesheet" href="shared.css">
+</head>
+<body>
+<div id="experiment-container">
+
+    <!-- ─── Start / Instructions Screen ─── -->
+    <div id="start-screen" class="screen active">
+        <div class="dnb-header">
+            <h1>Dual N-Back Task</h1>
+            <p class="dnb-tagline">Working memory &amp; executive function assessment</p>
+        </div>
+
+        <div class="dnb-how-it-works">
+            <div class="dnb-step">
+                <div class="dnb-step-num">1</div>
+                <div class="dnb-step-body">
+                    <strong>Watch the grid.</strong> A square lights up in one of 8 positions every ~3 seconds.
+                </div>
+            </div>
+            <div class="dnb-step">
+                <div class="dnb-step-num">2</div>
+                <div class="dnb-step-body">
+                    <strong>Listen carefully.</strong> A letter is spoken aloud at the same time as each flash.
+                </div>
+            </div>
+            <div class="dnb-step">
+                <div class="dnb-step-num">3</div>
+                <div class="dnb-step-body">
+                    <strong>Match to N steps ago.</strong> Press <kbd>F</kbd> if the position matches N trials back. Press <kbd>J</kbd> if the letter matches N trials back.
+                </div>
+            </div>
+        </div>
+
+        <div class="dnb-keys">
+            <div class="dnb-key-block">
+                <div class="dnb-key">F</div>
+                <div class="dnb-key-label">Position match</div>
+            </div>
+            <div class="dnb-key-sep">or</div>
+            <div class="dnb-key-block">
+                <div class="dnb-key">J</div>
+                <div class="dnb-key-label">Letter match</div>
+            </div>
+            <div class="dnb-key-sep">or</div>
+            <div class="dnb-key-block">
+                <div class="dnb-key">F+J</div>
+                <div class="dnb-key-label">Both match</div>
+            </div>
+        </div>
+
+        <div class="dnb-note">
+            <strong>0-Back special rule:</strong> Target position is always the <em>top-left square</em>. Target letter is always <em>"Q"</em>.
+        </div>
+
+        <div class="dnb-audio-note">Ensure your audio is on and volume is up before starting.</div>
+
+        <button id="start-btn">Start Practice</button>
+        <br>
+        <button class="btn-skip-test" id="skipTestBtn">Skip this test</button>
+    </div>
+
+    <!-- ─── Practice Lobby Screen ─── -->
+    <div id="practice-screen" class="screen">
+        <div class="practice-lobby">
+            <h2>Practice Mode</h2>
+            <p class="practice-intro">Choose an N-Back level to practice. You can switch levels freely and practice as many times as you like. When you feel ready, press <strong>Take the Test</strong>.</p>
+
+            <div class="practice-level-grid">
+                <button class="practice-level-btn" data-n="0">
+                    <span class="pl-n">0-Back</span>
+                    <span class="pl-desc">Fixed targets</span>
+                </button>
+                <button class="practice-level-btn" data-n="1">
+                    <span class="pl-n">1-Back</span>
+                    <span class="pl-desc">1 step ago</span>
+                </button>
+                <button class="practice-level-btn" data-n="2">
+                    <span class="pl-n">2-Back</span>
+                    <span class="pl-desc">2 steps ago</span>
+                </button>
+                <button class="practice-level-btn" data-n="3">
+                    <span class="pl-n">3-Back</span>
+                    <span class="pl-desc">3 steps ago</span>
+                </button>
+            </div>
+
+            <div id="practice-status" class="practice-status"></div>
+
+            <button id="begin-test-btn" class="btn-begin-test">Take the Test</button>
+        </div>
+    </div>
+
+    <!-- ─── Per-block Instruction Screen ─── -->
+    <div id="instructions-screen" class="screen">
+        <div class="block-instr-wrap">
+            <h2 id="instruction-title"></h2>
+            <p id="instruction-text" class="block-instr-text"></p>
+            <div class="countdown-ring">
+                <span id="instruction-timer">15</span>
+            </div>
+            <p class="countdown-label">Seconds until block begins</p>
+        </div>
+    </div>
+
+    <!-- ─── Task Screen ─── -->
+    <div id="task-screen" class="screen">
+        <div id="task-header" class="task-header-row"></div>
+        <div id="feedback-message"></div>
+        <div class="grid-container" id="grid">
+            <div class="grid-cell" id="cell-0"></div>
+            <div class="grid-cell" id="cell-1"></div>
+            <div class="grid-cell" id="cell-2"></div>
+            <div class="grid-cell" id="cell-3"></div>
+            <div class="grid-cell center-cell" id="cell-4">+</div>
+            <div class="grid-cell" id="cell-5"></div>
+            <div class="grid-cell" id="cell-6"></div>
+            <div class="grid-cell" id="cell-7"></div>
+            <div class="grid-cell" id="cell-8"></div>
+        </div>
+        <div class="task-keys">
+            <span class="task-key">F</span><span class="task-key-label">Position</span>
+            &nbsp;&nbsp;
+            <span class="task-key">J</span><span class="task-key-label">Letter</span>
+        </div>
+        <div id="task-footer">
+            <!-- practice: back to lobby button; test: skip block button -->
+        </div>
+    </div>
+
+    <!-- ─── Rest Screen ─── -->
+    <div id="rest-screen" class="screen">
+        <div class="rest-content">
+            <h2>Rest Break</h2>
+            <p>Take a breath. The next block begins in</p>
+            <div class="countdown-ring"><span id="rest-timer">15</span></div>
+        </div>
+    </div>
+
+    <!-- ─── End Screen ─── -->
+    <div id="end-screen" class="screen">
+        <div class="results-hero">
+            <div class="results-icon">&#10003;</div>
+            <h2>Dual N-Back Complete</h2>
+            <p class="r-subtitle">Working memory performance</p>
+        </div>
+        <div id="metricsCards" class="metrics-grid"></div>
+        <p class="section-label" style="text-align:left;padding:0 4px;">Results by N-Back Level</p>
+        <div class="block-wrap">
+            <div id="results-content"></div>
+        </div>
+        <button class="btn-continue" id="goToAnotherTest" style="display:none;margin-top:20px;">Continue</button>
+    </div>
+
+</div>
+<script src="dual_n_back.js"></script>
+</body>
+</html>
