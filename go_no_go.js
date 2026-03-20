@@ -1,7 +1,3 @@
-// ============================================================
-//  Go / No-Go Task  –  X-PhenoADHD data pipeline
-// ============================================================
-
 const ALL_TESTS  = ['go_no_go.html', 'pvt.html', 'trail_making.html', 'dual_n_back.html'];
 const THIS_TEST  = 'go_no_go.html';
 
@@ -30,10 +26,15 @@ let currentTrialType   = null;
 let currentBlockRTs    = [];
 
 // ── Event listeners ──────────────────────────────────────────
+// Ensure the page captures keyboard input on Windows/Linux where focus is not auto-granted
+document.body.tabIndex = 0;
+document.body.focus();
+
 document.getElementById('goNoGoButton').addEventListener('click', startInitialTest);
 document.getElementById('skipTestBtn').addEventListener('click', () => navigateNext());
 document.getElementById('skipRoundBtn').addEventListener('click', skipCurrentRound);
-document.addEventListener('keydown', handleKeyPress);
+// Use window instead of document — more reliable on Windows/Linux for capturing keyboard events
+window.addEventListener('keydown', handleKeyPress);
 
 // ── Navigation helper ─────────────────────────────────────────
 function navigateNext() {
@@ -62,6 +63,7 @@ function skipCurrentRound() {
 }
 
 function startInitialTest() {
+    document.body.focus(); // Re-grab focus after button click on Windows/Linux
     document.getElementById('welcomeScreen').style.display = 'none';
     document.getElementById('testContainer').style.display = 'block';
     document.getElementById('goNoGoButton').textContent = 'Preparing…';
@@ -292,3 +294,4 @@ function showFinalResults() {
 
     document.getElementById('goToAnotherTest').addEventListener('click', navigateNext);
 }
+

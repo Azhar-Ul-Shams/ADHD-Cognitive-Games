@@ -1,7 +1,3 @@
-// ============================================================
-//  PVT – X-PhenoADHD pipeline (with skip buttons + styled results)
-// ============================================================
-
 const ALL_TESTS = ['go_no_go.html', 'pvt.html', 'trail_making.html', 'dual_n_back.html'];
 const THIS_TEST = 'pvt.html';
 
@@ -21,11 +17,16 @@ let stimulusTimeout;
 let fixationTimeout;
 let isPracticeRound  = false;
 
+// Ensure the page captures keyboard input on Windows/Linux where focus is not auto-granted
+document.body.tabIndex = 0;
+document.body.focus();
+
 document.getElementById('startButton').addEventListener('click', startPracticeRound);
 document.getElementById('skipTestBtn').addEventListener('click', () => navigateNext());
 document.getElementById('skipPracticeBtn').addEventListener('click', skipPractice);
 document.getElementById('skipRoundBtn').addEventListener('click', skipRound);
-document.addEventListener('keydown', handleKeyPress);
+// Use window instead of document — more reliable on Windows/Linux for capturing keyboard events
+window.addEventListener('keydown', handleKeyPress);
 
 function navigateNext() {
     let completed = JSON.parse(sessionStorage.getItem('completedTests')) || [];
@@ -51,6 +52,7 @@ function skipRound() {
 
 function startPracticeRound() {
     isPracticeRound = true;
+    document.body.focus(); // Re-grab focus after button click on Windows/Linux
     document.getElementById('welcomeScreen').style.display = 'none';
     document.getElementById('practiceScreen').style.display = 'block';
     resetBlockCounters();
@@ -210,3 +212,4 @@ function showFinalResults() {
     }
     document.getElementById('goToAnotherTest').addEventListener('click', navigateNext);
 }
+

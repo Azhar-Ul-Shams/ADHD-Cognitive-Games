@@ -1,10 +1,3 @@
-// ============================================================
-//  Dual N-Back Task – X-PhenoADHD pipeline
-//  • Unlimited free practice with level selector
-//  • Audio rate 1.35 (10% longer than 1.5)
-//  • Skip buttons for test blocks
-// ============================================================
-
 const ALL_TESTS_DNB = ['go_no_go.html', 'pvt.html', 'trail_making.html', 'dual_n_back.html'];
 const THIS_TEST_DNB = 'dual_n_back.html';
 
@@ -76,7 +69,12 @@ function setStatus(text, type = 'neutral') {
 }
 
 // ── Initial start ─────────────────────────────────────────────
+// Ensure the page captures keyboard input on Windows/Linux where focus is not auto-granted
+document.body.tabIndex = 0;
+document.body.focus();
+
 document.getElementById('start-btn').addEventListener('click', () => {
+    document.body.focus(); // Re-grab focus after button click on Windows/Linux
     switchScreen('practice');
     setStatus('Select a level above, then click a level button to begin practicing.', 'neutral');
 });
@@ -295,7 +293,8 @@ function runTrial() {
 }
 
 // ── Response handling ─────────────────────────────────────────
-document.addEventListener('keydown', (e) => {
+// Use window instead of document — more reliable on Windows/Linux for capturing keyboard events
+window.addEventListener('keydown', (e) => {
     if (!screens.task.classList.contains('active')) return;
     const rt = performance.now() - trialStartTime;
 
