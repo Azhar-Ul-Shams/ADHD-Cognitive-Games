@@ -361,7 +361,7 @@ function nbackStats(targetBlock) {
 function showEndResults() {
     const levels = ['0-back', '1-back', '2-back', '3-back'];
     const stats  = levels.map(l => ({ level: l, ...nbackStats(l) }));
-    const wmLoad = (stats[2].hits + stats[3].hits) - stats[0].hits;
+    const wmLoad = Math.round((stats[2].hitRate + stats[3].hitRate) / 2);
 
     function gb(v, g, o) { return v >= g ? 'good' : v >= o ? 'ok' : 'concern'; }
     const bl = { good: 'Good', ok: 'Fair', concern: 'Review' };
@@ -369,7 +369,7 @@ function showEndResults() {
     document.getElementById('metricsCards').innerHTML = `
         <div class="metric-card"><div class="m-label">2-Back Hit Rate</div><div class="m-value">${stats[2].hitRate}%</div><div class="m-badge ${gb(stats[2].hitRate,70,50)}">${bl[gb(stats[2].hitRate,70,50)]}</div></div>
         <div class="metric-card"><div class="m-label">3-Back Hit Rate</div><div class="m-value">${stats[3].hitRate}%</div><div class="m-badge ${gb(stats[3].hitRate,60,40)}">${bl[gb(stats[3].hitRate,60,40)]}</div></div>
-        <div class="metric-card"><div class="m-label">WM Load Index</div><div class="m-value">${wmLoad}</div><div class="m-unit">2+3 back hits</div></div>
+        <div class="m-value">${wmLoad}%</div><div class="m-unit">avg 2+3-back accuracy</div>
         <div class="metric-card"><div class="m-label">2-Back Avg RT</div><div class="m-value">${stats[2].avgRT || '–'}</div><div class="m-unit">ms</div></div>
     `;
 
@@ -379,7 +379,7 @@ function showEndResults() {
             <tbody>${stats.map(s => `
                 <tr><td>${s.level}</td><td>${s.hits}</td><td>${s.misses}</td><td>${s.fa}</td><td>${s.avgRT ? s.avgRT + ' ms' : '–'}</td><td>${s.hitRate}%</td></tr>`).join('')}
             </tbody>
-            <tfoot><tr><td>WM Load</td><td colspan="5">${wmLoad} (higher = better working memory)</td></tr></tfoot>
+            <tfoot><tr><td>WM Load Index</td><td colspan="5">${wmLoad}% avg accuracy at 2+3-back (higher = stronger working memory)</td></tr></tfoot>
         </table>`;
 
     document.getElementById('goToAnotherTest').style.display = 'block';
