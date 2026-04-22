@@ -1,15 +1,3 @@
-"""
-server.py  –  X-PhenoADHD backend
-MongoDB Atlas edition · Deploy on Render with gunicorn
-
-Local dev:
-    export MONGO_URI="mongodb+srv://..."
-    python server.py
-
-Render:
-    Set MONGO_URI in Environment tab → gunicorn handles the rest
-"""
-
 from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 from pymongo import MongoClient
@@ -169,7 +157,7 @@ def save_data():
                 'mood':       num(state.get('mood')),
             },
 
-            # Full raw results — kept for reanalysis / debugging
+            # Full raw results kept for reanalysis / debugging
             'rawResults': {
                 'goNoGo':      gng      or None,
                 'pvt':         pvt      or None,
@@ -177,7 +165,7 @@ def save_data():
                 'dualNBack':   dnb_data or None,
             },
 
-            # Flattened feature metrics — ready for ML pipeline
+            # Flattened feature metrics
             'metrics': {
                 # Go / No-Go
                 'gng_totalGoTrials':    gng_total_go   or None,
